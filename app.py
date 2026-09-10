@@ -3,8 +3,6 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 from googletrans import Translator
-from streamlit_lottie import st_lottie
-import json
 
 st.title('Análisis de Sentimiento')
 image = Image.open('emoticones.jpg')
@@ -37,18 +35,7 @@ with st.expander('Analizar texto'):
         x=round(blob.sentiment.polarity,2)
         if x > 0.0 and x <=1.0:
             st.write( 'Es un sentimiento Positivo 😊')
-            with open('Happy.json') as source:
-                animation = json.load(source)
-            st_lottie(animation, width=350)
-
         elif x >=-1 and x <= 0:
             st.write( 'Es un sentimiento Negativo 😔')
-            with open('Sad Emoji.json') as source:
-                animation = json.load(source)
-            st_lottie(animation, width=350)
-
         else:
             st.write( 'Es un sentimiento Neutral 😐')
-            with open('Neutral face.json') as source:
-                animation = json.load(source)
-            st_lottie(animation, width=350)
